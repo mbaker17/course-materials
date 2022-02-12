@@ -1,11 +1,16 @@
 1. Explain what the code does.
-The code scans for ports and stores and outputs if they are open or closed.
 
-2. Modification to the code based on Todo
+Function Worker
+Operates on a range of ports. Uses a communication channel. For all ports create address with port number. Create connection for one second and then move on. If there is an error send -port number to the channel. Else close connection and send the port number to the channel.
+
+Function PortScanner
+Sets size of channel. Create parallel processes with workers. Take one port out of the channel at a time. If port > 0 append to open port list. If port < 0 then change to positive number and append to closed port list. Then print out open and closed ports. Finally return the total number of ports scanned.
+
+2. Modification to the code based on Todos
 TODO 1 - Just a comment that explains how to run the code.
-TODO 2 - 
+TODO 2 - Change to a dial time out which is shorter than the default 
 TODO 3 - Track closed ports.
-TODO 4 - Tunes the program by changing the amount of threads running in the program.
+TODO 4 - Tunes the program by changing the size of the channel.
 TODO 5 - Add closed ports output. Also add a comma for parsing later on.
 TODO 6 - Return total number of ports scanned. Closed + Open.
 
