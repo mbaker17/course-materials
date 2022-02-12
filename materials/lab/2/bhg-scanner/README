@@ -1,1 +1,13 @@
-You might need to do a "go mod init bhg-scanner" or "go mod tidy"
+1. Explain what the code does.
+The code scans for ports and stores and outputs if they are open or closed.
+
+2. Modification to the code based on Todo
+TODO 1 - Just a comment that explains how to run the code.
+TODO 2 - 
+TODO 3 - Track closed ports.
+TODO 4 - Tunes the program by changing the amount of threads running in the program.
+TODO 5 - Add closed ports output. Also add a comma for parsing later on.
+TODO 6 - Return total number of ports scanned. Closed + Open.
+
+3. Modification of the code 
+I added the ability to specify how many ports you want scanned.
