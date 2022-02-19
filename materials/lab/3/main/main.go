@@ -18,6 +18,8 @@ func main() {
 		log.Fatalln("Usage: main <searchterm>")
 	}
 	apiKey := os.Getenv("SHODAN_API_KEY")
+	fmt.Printf("Api Key:")
+	fmt.Printf("Api Key: %s", apiKey)
 	s := shodan.New(apiKey)
 	info, err := s.APIInfo()
 	if err != nil {
