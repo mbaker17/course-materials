@@ -1,7 +1,7 @@
 // Build and Use this File to interact with the shodan package
 // In this directory lab/3/shodan/main:
 // go build main.go
-// SHODAN_API_KEY=YOURAPIKEYHERE ./main <search term>
+// SHODAN_API_KEY=YOURAPIKEYHERE ./main <search term> <number of pages>
 
 package main
 
@@ -11,10 +11,11 @@ import (
 	"os"
 	"encoding/json"
 	"shodan/shodan"
+	"strconv"
 )
 
 func main() {
-	if len(os.Args) != 2 {
+	if len(os.Args) != 3 {
 		log.Fatalln("Usage: main <searchterm>")
 	}
 	apiKey := os.Getenv("SHODAN_API_KEY")
@@ -28,7 +29,12 @@ func main() {
 		info.QueryCredits,
 		info.ScanCredits)
 
-	hostSearch, err := s.HostSearch(os.Args[1])
+		pages, err := strconv.Atoi(os.Args[2])
+		if err != nil {
+		   // Add code here to handle the error!
+		}
+
+	hostSearch, err := s.HostSearch(os.Args[1], pages)
 	if err != nil {
 		log.Panicln(err)
 	}
