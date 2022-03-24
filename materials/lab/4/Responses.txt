@@ -1,3 +1,5 @@
+The update test fails because the assignment gets deleted before it can be updated.
+
 {
 	"id": "54b59013-bc65-481d-8853-e76cfb6e83e0",
 	"name": "Assignments",
