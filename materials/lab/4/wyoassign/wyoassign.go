@@ -103,6 +103,23 @@ func UpdateAssignment(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Entering %s end point", r.URL.Path)
 	w.Header().Set("Content-Type", "application/json")
 	
+	
+	w.WriteHeader(http.StatusOK)
+	params := mux.Vars(r)
+
+	for _, assignment := range Assignments {
+		if assignment.Id == params["id"]{
+			// json.NewEncoder(w).Encode(assignment)
+			assignmnet.Id =  r.FormValue("id")
+			assignmnet.Title =  r.FormValue("title")
+			assignmnet.Description =  r.FormValue("desc")
+			assignmnet.Points, _ =  strconv.Atoi(r.FormValue("points"))
+			Assignments = append(Assignments, assignmnet)
+			break
+		}
+	}
+
+
 	var response Response
 	response.Assignments = Assignments
 
