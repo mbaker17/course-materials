@@ -1,0 +1,218 @@
+The update test fails because the assignment gets deleted before it can be updated.
+
+{
+	"id": "54b59013-bc65-481d-8853-e76cfb6e83e0",
+	"name": "Assignments",
+	"timestamp": "2022-03-23T17:18:07.130Z",
+	"collection_id": "0-72f236f5-19ae-4e41-bfd7-54e5b3aad889",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "04b2ef61-94c0-4f2f-9785-3fdedc623a87",
+			"name": "APISTATUS",
+			"url": "http://localhost:8080/api-status",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c78b1bd6-f045-4621-8640-6ab3d57f5abe",
+			"name": "GetAssignments",
+			"url": "http://localhost:8080/assignments",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0acb9adf-5109-480e-9ca8-b97e48656c40",
+			"name": "GetAssignment",
+			"url": "http://localhost:8080/assignment/Mike1A",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "42bf1b51-9586-4719-8bb3-6bf592bb48e2",
+			"name": "DeleteAssignment",
+			"url": "http://localhost:8080/assignment/Mike1A",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e3a06996-e296-4eba-b5ca-840f12243991",
+			"name": "CreateAssignment",
+			"url": "http://localhost:8080/assignment?id=Mike3333&title=Lab%208&desc=eyyo&points=35",
+			"time": 3,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "00591436-04b8-46d3-8cf2-5df74f173509",
+			"name": "UpdateAssignment",
+			"url": "http://localhost:8080/assignment/Mike1A?title=update&desc=update&points=17",
+			"time": 3,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "43a8f577-d0dc-437a-9873-6b3c0c5a2331",
+			"name": "GetClass",
+			"url": "http://localhost:8080/classes",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "71d5fef3-02ef-4ff6-93c5-8c1fc470f1cd",
+			"name": "CreateClass",
+			"url": "http://localhost:8080/class?id=Mike3333&name=Lab%208&desc=eyyo&grade=35",
+			"time": 4,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1d2a65ee-e0fa-4b28-8434-32e3fc8ff624",
+			"name": "DeleteClass",
+			"url": "http://localhost:8080/assignment/Mike1A",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 35,
+	"collection": {
+		"requests": [
+			{
+				"id": "04b2ef61-94c0-4f2f-9785-3fdedc623a87",
+				"method": "GET"
+			},
+			{
+				"id": "c78b1bd6-f045-4621-8640-6ab3d57f5abe",
+				"method": "GET"
+			},
+			{
+				"id": "0acb9adf-5109-480e-9ca8-b97e48656c40",
+				"method": "GET"
+			},
+			{
+				"id": "42bf1b51-9586-4719-8bb3-6bf592bb48e2",
+				"method": "DELETE"
+			},
+			{
+				"id": "e3a06996-e296-4eba-b5ca-840f12243991",
+				"method": "POST"
+			},
+			{
+				"id": "00591436-04b8-46d3-8cf2-5df74f173509",
+				"method": "PUT"
+			},
+			{
+				"id": "43a8f577-d0dc-437a-9873-6b3c0c5a2331",
+				"method": "GET"
+			},
+			{
+				"id": "71d5fef3-02ef-4ff6-93c5-8c1fc470f1cd",
+				"method": "POST"
+			},
+			{
+				"id": "1d2a65ee-e0fa-4b28-8434-32e3fc8ff624",
+				"method": "DELETE"
+			}
+		]
+	}
+}

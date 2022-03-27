@@ -9,6 +9,10 @@ import (
 
 
 func main() {
+
+	fileServer := http.FileServer(http.Dir("index.html")) // New code
+    http.Handle("/yeet", fileServer) // New code
+
 	wyoassign.InitAssignments()
 	log.Println("starting API server")
 	//create a new router
@@ -20,8 +24,15 @@ func main() {
 	router.HandleFunc("/assignment/{id}", wyoassign.GetAssignment).Methods("GET")
 	router.HandleFunc("/assignment/{id}", wyoassign.DeleteAssignment).Methods("DELETE")		
 	router.HandleFunc("/assignment", wyoassign.CreateAssignment).Methods("POST")	
+<<<<<<< HEAD
 	router.HandleFunc("/assignments/{id}", wyoassign.UpdateAssignment).Methods("PUT")
+=======
+	router.HandleFunc("/assignment/{id}", wyoassign.UpdateAssignment).Methods("PUT")
+>>>>>>> 0f7f1180c22ddeb24d6d5bb49ca0deeabad1fef8
 
+	router.HandleFunc("/classes", wyoassign.GetClasses).Methods("GET")
+	router.HandleFunc("/class", wyoassign.CreateClass).Methods("POST")
+	router.HandleFunc("/class/{id}", wyoassign.DeleteClass).Methods("DELETE")	
 	http.Handle("/", router)
 
 	//start and listen to requests

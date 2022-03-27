@@ -14,6 +14,10 @@ type Response struct{
 	Assignments []Assignment `json:"assignments"`
 }
 
+type CResponse struct{
+	Classes []Class `json:"classes"`
+}
+
 type Assignment struct {
 	Id string `json:"id"`
 	Title string `json:"title`
@@ -23,6 +27,15 @@ type Assignment struct {
 
 var Assignments []Assignment
 const Valkey string = "FooKey"
+
+type Class struct {
+	Id string `json:"id"`
+	Name string `json:"name`
+	Description string `json:"desc"`
+	Grade int `json:"grade"`
+}
+
+var Classes []Class
 
 func InitAssignments(){
 	var assignmnet Assignment
@@ -103,6 +116,7 @@ func UpdateAssignment(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Entering %s end point", r.URL.Path)
 	w.Header().Set("Content-Type", "application/json")
 	
+<<<<<<< HEAD
 	
 	w.WriteHeader(http.StatusOK)
 	params := mux.Vars(r)
@@ -122,8 +136,25 @@ func UpdateAssignment(w http.ResponseWriter, r *http.Request) {
 
 	var response Response
 	response.Assignments = Assignments
+=======
+	//w.WriteHeader(http.StatusOK)
+	params := mux.Vars(r)
+>>>>>>> 0f7f1180c22ddeb24d6d5bb49ca0deeabad1fef8
 
+	r.ParseForm()
+	
+	// response := make(map[string]string)
 
+	// response["status"] = "No Such ID to Update"
+	for i, assignment := range Assignments {
+			if assignment.Id == params["id"]{
+				Assignments[i].Title =  r.FormValue("title")
+				Assignments[i].Description =  r.FormValue("desc")
+				Assignments[i].Points, _ =  strconv.Atoi(r.FormValue("points"))
+				w.WriteHeader(http.StatusCreated)
+			}
+			w.WriteHeader(http.StatusNotFound)
+	}
 
 }
 
@@ -143,4 +174,67 @@ func CreateAssignment(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusNotFound)
 
+}
+
+//----------------------------------------------------------------------
+
+func GetClasses(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Entering %s end point", r.URL.Path)
+	var response CResponse
+
+	response.Classes = Classes
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	
+	jsonResponse, err := json.Marshal(response)
+
+	if err != nil {
+		return
+	}
+
+	//TODO 
+	w.Write(jsonResponse)
+}
+
+func CreateClass(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var class Class
+	r.ParseForm()
+	// Possible TODO: Better Error Checking!
+	// Possible TODO: Better Logging
+	if(r.FormValue("id") != ""){
+		class.Id =  r.FormValue("id")
+		class.Name =  r.FormValue("name")
+		class.Description =  r.FormValue("desc")
+		class.Grade, _ =  strconv.Atoi(r.FormValue("grade"))
+		Classes = append(Classes, class)
+		w.WriteHeader(http.StatusCreated)
+	}
+	w.WriteHeader(http.StatusNotFound)
+
+}
+
+func DeleteClass(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Entering %s DELETE end point", r.URL.Path)
+	w.Header().Set("Content-Type", "application/txt")
+	w.WriteHeader(http.StatusOK)
+	params := mux.Vars(r)
+	
+	response := make(map[string]string)
+
+	response["status"] = "No Such ID to Delete"
+	for index, class := range Classes {
+			if class.Id == params["id"]{
+				Classes = append(Classes[:index], Classes[index+1:]...)
+				response["status"] = "Success"
+				break
+			}
+	}
+		
+	jsonResponse, err := json.Marshal(response)
+	if err != nil {
+		return
+	}
+	w.Write(jsonResponse)
 }
