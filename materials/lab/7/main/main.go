@@ -2,6 +2,8 @@ package main
 
 import (
 	"hscan/hscan"
+	"os"
+	"fmt"
 )
 
 func main() {
@@ -18,11 +20,18 @@ func main() {
 	// Download and use bigger password file from: https://weakpass.com/wordlist/tiny  (want to push yourself try /small ; to easy? /big )
 
 	//TODO Grab the file to use from the command line instead; look at previous lab (e.g., #3 ) for examples of grabbing info from command line
-	var file = "wordlist.txt"
+	// var file = "wordlist.txt"
+
+	if len(os.Args) != 2 {
+		fmt.Printf("Incorrect Number of arguments:")
+	}
+	
+	var file = os.Args[1]
+
 
 	hscan.GuessSingle(md5hash, file)
 	hscan.GuessSingle(sha256hash, file)
 	hscan.GenHashMaps(file)
-	hscan.GetSHA(sha256hash)
-	hscan.GetMD5(sha256hash)
+	hscan.GetSHA(drmike2)
+	hscan.GetMD5(drmike1)
 }
