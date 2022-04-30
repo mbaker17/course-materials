@@ -9,6 +9,7 @@ import (
 	"log"
 	"os"
 	"sync"
+	"time"
 )
 
 //==========================================================================\\
@@ -99,6 +100,8 @@ func GenHashMaps(filename string) {
 	// 1. With and without using go subroutines
 	// 2. Compute the time per password (hint the number of passwords for each file is listed on the site...)
 
+	start := time.Now()
+
 	f, err := os.Open(filename)
 	if err != nil {
 		log.Fatalln(err)
@@ -130,6 +133,8 @@ func GenHashMaps(filename string) {
 		log.Fatalln(err)
 	}
 
+	duration := time.Since(start)
+	fmt.Println(duration)
 }
 
 func GetSHA(hash string) (string, error) {

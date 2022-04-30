@@ -10,6 +10,19 @@ Due April 9th at 11:59PM
 - Capture Timing Details (per hscan.go) for various implementation of creating the hash maps
 
 ## Submit 
+Two Passwords found.
+1. letmein
+2. p@ssword
+
 1. Link to your Github Repository [16pts]
-2. Report the numbers [2pts]
+2. Report the numbers [4pts]
+Time without go routines
+797.270039ms
+
+Time with go routines
+783.070521ms
+
+Since I had to use mutex locks with every go routine it didnt seem to speed up my searches any significant amount.
+
 2. List of Collaborator
+No one
